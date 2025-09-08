@@ -1,0 +1,41 @@
+---
+import shot from "@/assets/players_shot.jpg";
+import { Button } from "@/components/ui/button";
+
+const heading = "";
+const title = "Premier Technology";
+const description =
+  "We want this to feel like real golf, so we needed the best technology. Which is why The Fairway is retrofitted with seven TrackMan 4 simulators";
+const features: any[] = [];
+const imageAlt = "Product screenshot";
+---
+
+<div class="overflow-hidden bg-background py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div
+      class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
+    >
+      <div class="lg:ml-auto lg:pt-4 lg:pl-4">
+        <div class="lg:max-w-lg">
+          <h2 class="text-base/7 font-semibold text-primary">{heading}</h2>
+          <p
+            class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl"
+          >
+            {title}
+          </p>
+          <p class="my-6 text-lg/8 text-muted-foreground">{description}</p>
+          <Button><a href="/golf/technology">Learn More</a></Button>
+        </div>
+      </div>
+      <div class="flex items-start justify-end lg:order-first">
+        <img
+          width="2432"
+          height="1442"
+          src={shot.src}
+          alt={imageAlt}
+          class="w-3xl max-w-none rounded-xl shadow-xl ring-1 ring-border sm:w-228 dark:hidden"
+        />
+      </div>
+    </div>
+  </div>
+</div>
