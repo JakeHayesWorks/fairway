@@ -5,6 +5,7 @@ import {
   EnvelopeIcon,
   PhoneIcon,
 } from "@heroicons/react/20/solid";
+import ContactForm from "./ContactForm.tsx";
 ---
 
 <div class="relative isolate bg-background">
@@ -54,117 +55,6 @@ import {
         </dl>
       </div>
     </div>
-    <form
-      method="POST"
-      id="form"
-      class="px-6 pt-20 pb-24 sm:pb-32 lg:px-8 lg:py-48"
-    >
-      <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
-        <input
-          type="hidden"
-          name="access_key"
-          value="62e2f460-313e-44d8-8921-b2618243d192"
-        />
-        <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-          <div class="sm:col-span-2">
-            <label
-              for="name"
-              class="block text-sm/6 font-semibold text-foreground">Name</label
-            >
-            <div class="mt-2.5">
-              <input
-                id="name"
-                type="text"
-                name="name"
-                required
-                class="block w-full rounded-md bg-background px-3.5 py-2 text-base text-foreground outline-1 -outline-offset-1 outline-border placeholder:text-muted-foreground focus:outline-2 focus:-outline-offset-2 focus:outline-primary"
-              />
-            </div>
-          </div>
-          <div class="sm:col-span-2">
-            <label
-              for="email"
-              class="block text-sm/6 font-semibold text-foreground">Email</label
-            >
-            <div class="mt-2.5">
-              <input
-                id="email"
-                type="email"
-                name="email"
-                required
-                class="block w-full rounded-md bg-background px-3.5 py-2 text-base text-foreground outline-1 -outline-offset-1 outline-border placeholder:text-muted-foreground focus:outline-2 focus:-outline-offset-2 focus:outline-primary"
-              />
-            </div>
-          </div>
-          <div class="sm:col-span-2">
-            <label
-              for="message"
-              class="block text-sm/6 font-semibold text-foreground"
-              >Message</label
-            >
-            <div class="mt-2.5">
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows="4"
-                class="block w-full rounded-md bg-background px-3.5 py-2 text-base text-foreground outline-1 -outline-offset-1 outline-border placeholder:text-muted-foreground focus:outline-2 focus:-outline-offset-2 focus:outline-primary"
-              ></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="mt-8 flex justify-end">
-          <button
-            type="submit"
-            class="rounded-md bg-primary px-3.5 py-2.5 text-center text-sm font-semibold text-primary-foreground shadow-xs hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-            >Submit Form</button
-          >
-        </div>
-        <div id="result" class="mt-4"></div>
-      </div>
-    </form>
+    <ContactForm client:load />
   </div>
 </div>
-
-<script is:inline>
-  const form = document.getElementById("form");
-  const result = document.getElementById("result");
-
-  form.addEventListener("submit", function (e) {
-    const formData = new FormData(form);
-    e.preventDefault();
-
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-
-    result.innerHTML = "Please wait...";
-
-    fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: json,
-    })
-      .then(async (response) => {
-        let json = await response.json();
-        if (response.status == 200) {
-          result.innerHTML = json.message;
-        } else {
-          console.log(response);
-          result.innerHTML = json.message;
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        result.innerHTML = "Something went wrong!";
-      })
-      .then(function () {
-        form.reset();
-        setTimeout(() => {
-          result.style.display = "none";
-        }, 3000);
-      });
-  });
-</script>
