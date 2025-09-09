@@ -14,13 +14,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  adapter: netlify({
-    redirects: [
-      {
-        from: "/stats.js",
-        to: "https://cloud.umami.is/script.js",
-        status: 200,
-      },
-    ],
-  }),
+  adapter: netlify(),
 });
