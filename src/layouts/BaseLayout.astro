@@ -4,6 +4,7 @@ import Header from "@/components/Header.tsx";
 import Footer from "@/components/Footer.astro";
 import "../styles/global.css";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
+import { Toaster } from "@/components/ui/sonner";
 
 const { title, description } = Astro.props;
 const path = Astro.url.pathname;
@@ -20,5 +21,6 @@ const path = Astro.url.pathname;
     <Header client:load pathname={path} />
     <slot />
     <Footer />
+    <Toaster />
   </body>
 </html>
