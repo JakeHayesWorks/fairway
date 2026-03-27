@@ -1,7 +1,7 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-import { ClockIcon, SunIcon, TrophyIcon, TvIcon } from "@heroicons/react/24/outline";
+import { ClockIcon } from "@heroicons/react/24/outline";
 import type { NavLink, SubmenuLink } from "./types";
 
 export const SITE_TITLE = 'The Fairway Evans Farm';

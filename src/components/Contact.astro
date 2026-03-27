@@ -1,5 +1,5 @@
 ---
-import { CONTACT_EMAIL, CONTACT_PHONE } from "@/consts";
+import { CONTACT_EMAIL } from "@/consts";
 import {
   BuildingOffice2Icon,
   EnvelopeIcon,
@@ -35,11 +35,6 @@ import ContactForm from "./ContactForm.tsx";
               <span class="sr-only">Telephone</span>
               <PhoneIcon className="size-6 text-muted-foreground" />
             </dt>
-            <dd>
-              <a href={`tel:${CONTACT_PHONE}`} class="hover:text-foreground"
-                >{CONTACT_PHONE}</a
-              >
-            </dd>
           </div>
           <div class="flex gap-x-4">
             <dt class="flex-none">
