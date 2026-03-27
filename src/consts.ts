@@ -18,10 +18,10 @@ export const GOLF_SUBMENU: SubmenuLink[] = [
 
 export const NAVIGATION_LINKS: NavLink[] = [
     { name: 'Home', href: '/' },
-    { name: 'Golf', href: '/golf', submenu: GOLF_SUBMENU },
-    { name: 'Leagues', href: '/leagues' },
-    { name: 'Lessons', href: '/lessons' },
-    { name: 'Event Rentals', href: '/events' },
+    // { name: 'Golf', href: '/golf', submenu: GOLF_SUBMENU },
+    { name: 'Membership', href: '/leagues' },
+    { name: 'Win a Year Membership', href: '/lessons' },
+    { name: 'Events', href: '/events' },
     { name: 'About Us', href: '/about' },
     { name: 'Contact', href: '/contact' },
 ]
