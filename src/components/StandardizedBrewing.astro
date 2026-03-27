@@ -1,0 +1,30 @@
+---
+import brewingImage from "@/assets/sb_logo.avif";
+
+const heading = "Standardized Brewing at The Fairway";
+const description = "Located next door to The Fairway Evans Farm, Standardized Brewing has a mix of craft beers and a full bar. The best part. You can order while you're golfing and have it delivered right to your golf bay."
+const ctaText = "See Menu";
+const ctaHref = "https://www.standardizedbrewing.com/";
+---
+
+<div class="bg-background">
+  <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+    <div class="flex flex-col-reverse gap-12 lg:flex-row lg:items-center lg:gap-16">
+      <div class="flex-1">
+        <h2 class="max-w-2xl text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl">{heading}</h2>
+        <p class="max-w-2xl mt-8 text-lg font-medium text-pretty text-muted-foreground sm:text-xl/8">{description}</p>
+        <div class="mt-10 flex items-center gap-x-6">
+          <a href={ctaHref} target="_blank" class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-primary-foreground shadow-xs hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">{ctaText}</a>
+        </div>
+      </div>
+      <div class="flex shrink-0 justify-center">
+        <img
+          src={brewingImage.src}
+          alt="Golfers on the course"
+          class="size-64 rounded-full object-contain"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+

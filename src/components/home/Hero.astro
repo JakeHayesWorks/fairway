@@ -1,21 +1,28 @@
 ---
-import { BOOK_TEE_TIME_URL, SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
+import { BOOK_TEE_TIME_URL, SITE_TITLE } from "@/consts";
 import main from "@/assets/main.avif";
 import { Button } from "@/components/ui/button";
 
-const heroAnnouncement = {
-  show: false,
-  text: "",
-  link: {
-    href: "#",
-    label: "Read more",
-    arrow: "→",
-  },
+type Link = {
+  href: string;
+  label: string;
+  arrow: string;
+}
+
+type Announcment = {
+  show: boolean;
+  text: string;
+  link?: Link; 
+}
+const heroAnnouncement: Announcment = {
+  show: true,
+  text: "Not Your Average Golf Simulator",
 };
 
 const heroTitle = SITE_TITLE;
 const heroDescription =
-  "Offering Upper Arlington and surrounding Columbus communities a premier indoor golf simulator experience. A place to come play 18, analyze your swing, or just come for a good time.";
+  "Offering Lewis Center and surrounding Delaware communities a premier indoor golf simulator experience. A hybrid private/public model allowing golfers of all skillsets a chance to play or train.";
+const heroDescription2: string | undefined | null = "While we are a membership driven club, anyone can get access to the facility Thursday at 5pm - Sunday at pm"
 
 const heroActions: {
   href: string;
@@ -27,16 +34,19 @@ const heroActions: {
     | "destructive"
     | "secondary"
     | "ghost";
+  newTab: boolean;
 }[] = [
   {
     href: BOOK_TEE_TIME_URL,
-    label: "Book a tee time",
+    label: "Sign Up Today",
     variant: "default",
+    newTab: true,
   },
   {
-    href: "/about",
-    label: "More about us →",
+    href: "/contact",
+    label: "Schedule a tour →",
     variant: "outline",
+    newTab: false,
   },
 ];
 
@@ -63,16 +73,16 @@ const heroImage = main;
                 <div class="hidden sm:mb-10 sm:flex">
                   <div class="relative rounded-full px-3 py-1 text-sm/6 text-muted-foreground ring-1 ring-border hover:ring-border/80">
                     {heroAnnouncement.text}
-                    <a
-                      href={heroAnnouncement.link.href}
+                    {!!heroAnnouncement.link && <a
+                      href={heroAnnouncement.link?.href}
                       class="font-semibold whitespace-nowrap text-primary"
                     >
                       <span aria-hidden="true" class="absolute inset-0" />
-                      {heroAnnouncement.link.label}
+                      {heroAnnouncement.link?.label}
                       <span aria-hidden="true">
-                        {heroAnnouncement.link.arrow}
+                        {heroAnnouncement.link?.arrow}
                       </span>
-                    </a>
+                    </a>}
                   </div>
                 </div>
               )
@@ -87,11 +97,16 @@ const heroImage = main;
             >
               {heroDescription}
             </p>
+            {!!heroDescription2 && <p
+              class="mt-8 text-lg font-medium text-pretty text-muted-foreground sm:text-xl/8"
+            >
+              {heroDescription2}
+            </p>}
             <div class="mt-10 flex items-center gap-x-6">
               {
                 heroActions.map((action) => (
                   <Button variant={action.variant}>
-                    <a href={action.href}>{action.label}</a>
+                    <a href={action.href} target={action.newTab ? '_blank' : '_self'}>{action.label}</a>
                   </Button>
                 ))
               }

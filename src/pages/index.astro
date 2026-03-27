@@ -3,11 +3,13 @@ import Hero from "@/components/home/Hero.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Technology from "@/components/home/Technology.astro";
+import StandardizedBrewing from "@/components/StandardizedBrewing.astro";
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <main>
     <Hero />
     <Technology />
+    <StandardizedBrewing />
   </main>
 </BaseLayout>
